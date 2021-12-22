@@ -1,6 +1,9 @@
 import React, {useState} from "react";
 import './Login.css';
+import auth from "firebase/compat/auth";
 import fire from "../../config/Fire";
+
+
 
 function Register () {
     const [register, setRegister] = useState({
@@ -19,21 +22,21 @@ function Register () {
     function handleRegister (e) {
         e.preventDefault();
         fire.auth().createUserWithEmailAndPassword(register.email, register.password)
-            .then((user) => {
-                console.log(user);
-            // var currentUser = fire.auth().currentUser;
-            // currentUser.updateProfile({
-            //     displayName: register.displayName
-            // })
+            .then((result) => {
+                // let currentUser = fire.auth().currentUser;
+            return result.user.updateProfile({
+                displayName: register.displayName
+            })
         })
             .catch((error) => {
             console.log(error.message);
-            setRegister({fireErrors: error.message})
+            setRegister({...register,fireErrors: error.message})
         })
     }
 
     return (
         <>
+            {register.fireErrors ? (<div className="Error">{register.fireErrors}</div>) : null}
             <form>
                 <input type="text"
                        className="regField"
