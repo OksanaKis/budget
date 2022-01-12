@@ -1,4 +1,11 @@
+.App {
+    width: 100vw;
+    height: 100vh;
+}
+
 body {
-    background: #425F9C;
-    /*color: ;*/
+    box-sizing: border-box;
+    background: #FFFACD;
+    margin: 0;
+    padding: 0;
 }

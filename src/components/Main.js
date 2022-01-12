@@ -1,11 +1,20 @@
 import React, {useEffect, useState} from "react";
-import './Main.css';
+import {BrowserRouter as Router, Routes, Route} from "react-router-dom";
 import Login from './forms/Login';
 import Register from "./forms/Register";
 import fire from "../config/Fire";
 import auth from "firebase/compat/auth";
 import Tracker from "./Tracker/Tracker";
 import Spinner from '../assets/loader.gif';
+import Navbar from "./Navbar/Navbar";
+import {GiHamburgerMenu} from "react-icons/gi";
+import "./Main.css";
+import Home from "./Pages/Home/Home";
+import Transactions from "./Pages/Transactions/Transactions";
+import Expenses from "./Pages/Planned_Expenses/Expenses";
+import Cards from "./Pages/Cards/Cards";
+import Reports from "./Pages/Reports/Reports";
+import Calendar from "./Pages/Calendar/Calendar";
 
 function Main() {
     const [main, setMain] = useState({
@@ -13,6 +22,9 @@ function Main() {
         loading: true,
         formSwitcher: false
     })
+
+    const [showNav, setShowNav] = useState(false);
+    console.log(showNav);
 
     useEffect(() => {
         authListener();
@@ -67,7 +79,29 @@ function Main() {
                     }
                 </div>)
                 :
-                (<Tracker/>)
+                (<>
+                        {/*<header>*/}
+                        {/*    <GiHamburgerMenu onClick={() => setShowNav(!showNav)}/>*/}
+                        {/*</header>*/}
+                        {/*<Navbar show={showNav}/>*/}
+                        {/*<Tracker/>*/}
+                        <Router>
+                            <header>
+                                <GiHamburgerMenu onClick={() => setShowNav(!showNav)}/>
+                            </header>
+                            <Navbar show={showNav}/>
+                            <Tracker/>
+                            <Routes>
+                                <Route exact path="/" element={<Home show={showNav}/>}/>
+                                <Route path="/transactions" element={<Transactions show={showNav}/>}/>
+                                <Route path="/expenses" element={<Expenses show={showNav}/>}/>
+                                <Route path="/cards" element={<Cards show={showNav}/>}/>
+                                <Route path="/reports" element={<Reports show={showNav}/>}/>
+                                <Route path="/calendar" element={<Calendar show={showNav}/>}/>
+                            </Routes>
+                        </Router>
+                    </>
+                )
             }
         </>
     )

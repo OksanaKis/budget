@@ -26,3 +26,21 @@
 .Spinner > .ImgSpinner {
     max-width: 30px;
 }
+
+header {
+    color: #141f1f;
+    padding: 30px;
+    background: #006666;
+    height: 40px;
+    /*width: 80%;*/
+}
+
+.transform {
+    box-sizing: border-box;
+    margin-left: 16%;
+    transition: margin-left .3s;
+    background: green;
+}
+.full {
+    background: red;
+}
