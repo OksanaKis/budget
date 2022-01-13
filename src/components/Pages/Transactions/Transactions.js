@@ -6,6 +6,7 @@ const Transactions = ({show}) => {
     console.log("Transactions");
     return (
         <div className={show ? 'transform' : 'full'}>
+            
             Transactions
         </div>
     );
