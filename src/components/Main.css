@@ -39,8 +39,9 @@ header {
     box-sizing: border-box;
     margin-left: 16%;
     transition: margin-left .3s;
-    background: green;
+    background: white;
 }
 .full {
-    background: pink;
+    /*background:#fadadb;*/
+    background: white;
 }

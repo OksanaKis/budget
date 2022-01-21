@@ -1,6 +1,7 @@
 .sidenav {
     height: 100%;
-    width: 11%;
+    /*width: 11%;*/
+    width: 16%;
     background: #006666;
     position: absolute;
     padding: 0 40px;
@@ -24,7 +25,7 @@ ul li {
 ul li a {
     color: #141f1f;
     text-decoration: none;
-    font-size: 23px;
+    font-size: 22px;
     display: block;
     padding: 10px 15px;
     border-radius: 6px;
